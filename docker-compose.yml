@@ -1,0 +1,43 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:4.1.13
+    restart: on-failure
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    command: "--bind_ip_all --replSet rs0"
+    environment:
+      MONGO_INITDB_DATABASE: template
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./data/mongo/:/docker-entrypoint-initdb.d/
+
+  rs-starter:
+    build:
+      context: ./
+      dockerfile: rs-starter.Dockerfile
+    environment:
+      USERNAME: root
+      PASSWORD: password
+    depends_on:
+      - mongodb
+    entrypoint: ["sh", "-c", "rs.sh"]
+
+  service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      APP_HTTP2_ENABLED: "true"
+      APP_HTTP2_KEY: "/etc/ssl/service/localhost-privkey.pem"
+      APP_HTTP2_CERT: "/etc/ssl/service/localhost-cert.pem"
+#      APP_HOSTNAME: "host.docker.internal"
+      AWS_ACCESS_KEY_ID: "dummyaccess"
+      AWS_SECRET_ACCESS_KEY: "dummysecret"
+    volumes:
+      - ./certs/:/etc/ssl/service/
