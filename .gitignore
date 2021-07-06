@@ -1,0 +1,28 @@
+# Project files
+.idea/
+*.iml
+.DS_Store
+
+# Build files
+node_modules/
+public/
+src/js/
+
+# Report files
+coverage/
+reports/
+.nyc_output/
+*.log
+
+# Package files
+package/
+*.tgz
+*.rpm
+
+# stryker temp files
+.stryker-tmp
+stryker.log
+
+# Deployment files
+.terraform
+*.tfplan
