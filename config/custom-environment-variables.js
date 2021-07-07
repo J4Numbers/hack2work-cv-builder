@@ -10,6 +10,19 @@ module.exports = {
     hostname: 'APP_HOSTNAME',
     port: 'APP_PORT',
   },
+  data: {
+    source: 'DATA_SOURCE',
+    mongo: {
+      url: 'DATA_MONGO_URL',
+      options: {
+        auth: {
+          authSource: 'DATA_MONGO_AUTH_SOURCE',
+        },
+        user: 'DATA_MONGO_USERNAME',
+        pass: 'DATA_MONGO_PASSWORD',
+      },
+    },
+  },
   banner: {
     phrase: 'BANNER_PHRASE',
     feedback_link: 'BANNER_FEEDBACK_LINK',
