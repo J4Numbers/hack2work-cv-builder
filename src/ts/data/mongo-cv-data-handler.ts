@@ -31,6 +31,8 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
   private static generateUserDetailsSchema(): Schema<UserDetails> {
     return new Schema<UserDetails>({
       _id: { type: String, default: generateUuid },
+      ucid: String,
+      role: String,
       name: {
         title: String,
         forename: String,

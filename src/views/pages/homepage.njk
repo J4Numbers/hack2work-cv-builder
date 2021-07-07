@@ -15,35 +15,30 @@
 {% endblock %}
 
 {% block content_body %}
-    <h1 class="govuk-heading-xl">UC CV builder</h1>
+    <h1 class="govuk-heading-xl">Available journeys</h1>
 
-    <p class="govuk-body">
-        Welcome to the CV builder journey for UC.
-    </p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            <p class="govuk-body">
+                The path for referring a claimant to the CV builder to create their CV...
+            </p>
+            <a class="govuk-button govuk-button--start" href="/referral">Begin</a>
+        </div>
 
-    <p class="govuk-body">
-        Use this service to:
-    </p>
+        <div class="govuk-grid-column-one-half">
+            <p class="govuk-body">
+                The path a claimant will take once they are invited to create a CV...
+            </p>
+            <a class="govuk-button govuk-button--start" href="/claimant">Begin</a>
+        </div>
+    </div>
 
-    <ul class="govuk-list govuk-list--bullet">
-        <li>Create a CV</li>
-    </ul>
-
-    {{ govukButton({
-        text: "Create CV",
-        href: "/create",
-        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
-        isStartButton: true
-    }) }}
-
-    <p class="govuk-body">
-        The following users are available...
-    </p>
-
-    <ul class="govuk-list govuk-list--bullet">
-        {% for user in users %}
-            <li>{{ user.name.forename }} {{ user.name.surname }} - {{ user.ucid }}</li>
-        {% endfor %}
-    </ul>
-
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            <p class="govuk-body">
+                The path a work coach will take to review a created CV...
+            </p>
+            <a class="govuk-button govuk-button--start" href="/review">Begin</a>
+        </div>
+    </div>
 {% endblock %}

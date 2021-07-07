@@ -2,7 +2,7 @@ const config = require('config');
 const sessionManager = require('../../../js/session-management').default();
 
 const generateSession = async (req, res) => {
-  req.log.debug('User is not logged in, or session has expired. Re-creating...');
+  req.log.debug('User has no session token, or session has expired. Re-creating...');
 
   let secure = '';
   if (config.get('app.http2.enabled')) {

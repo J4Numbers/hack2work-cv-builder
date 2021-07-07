@@ -1,9 +1,9 @@
-const renderer = require('../../js/renderer/nunjucks-renderer').default();
+const renderer = require('../../../js/renderer/nunjucks-renderer').default();
 
 const renderResponse = (req, res, next) => {
   res.contentType = 'text/html';
   res.header('content-type', 'text-html');
-  res.send(200, renderer.render('pages/welcome.njk', {
+  res.send(200, renderer.render('pages/referral/overview.njk', {
     ...res.nunjucks,
     ...res.locals.render,
   }));
@@ -12,5 +12,5 @@ const renderResponse = (req, res, next) => {
 };
 
 module.exports = (server) => {
-  server.get('/welcome', renderResponse);
+  server.get('/referral/overview', renderResponse);
 };
