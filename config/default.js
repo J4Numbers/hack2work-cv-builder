@@ -6,7 +6,7 @@ module.exports = {
       key: '/path/to/key/file',
       cert: '/path/to/cert/file',
     },
-    name: 'template',
+    name: 'h2w-cv-builder',
     hostname: 'localhost',
     port: 8000,
   },
@@ -20,6 +20,6 @@ module.exports = {
   logger: {
     level: 'debug',
     file: false,
-    file_location: 'template.log',
+    file_location: 'h2w-cv-builder.log',
   },
 };
