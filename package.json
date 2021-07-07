@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "h2w-cv-builder",
   "version": "1.0.0-SNAPSHOT",
   "description": "A template service for hack2work",
   "main": "src/app.js",
@@ -46,7 +46,11 @@
     "url": "https://github.com/dwp/"
   },
   "keywords": [
-    "hack2work"
+    "hack2work",
+    "cv-builder",
+    "cv",
+    "resume",
+    "universal credit"
   ],
   "author": "Jayne Doe <jayne.doe@engineering.digital.dwp.gov.uk>",
   "license": "MIT",

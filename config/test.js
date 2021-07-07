@@ -5,7 +5,7 @@ module.exports = {
       key: 'certs/localhost-privkey.pem',
       cert: 'certs/localhost-cert.pem',
     },
-    name: 'template',
+    name: 'h2w-cv-builder',
     hostname: 'localhost',
     port: 8199,
   },
