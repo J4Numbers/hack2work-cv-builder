@@ -8,7 +8,7 @@ module.exports = {
     },
     name: 'h2w-cv-builder',
     hostname: 'localhost',
-    port: 8000,
+    port: 8080,
   },
   banner: {
     phrase: 'Internal',
