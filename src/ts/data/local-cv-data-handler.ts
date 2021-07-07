@@ -5,7 +5,6 @@ import loggingEngine from '../logger/bunyan-logger';
 const log = loggingEngine();
 
 export default class LocalCvDataHandler extends StandardCvDataHandler {
-
   private userDetails: Array<UserDetails>;
 
   constructor() {
