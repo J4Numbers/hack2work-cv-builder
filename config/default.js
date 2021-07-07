@@ -14,6 +14,19 @@ module.exports = {
     phrase: 'Internal',
     feedback_link: 'https://github.com/dwp/',
   },
+  data: {
+    source: 'local',
+    mongo: {
+      url: 'mongo://mongoserver.com/cv-builder',
+      options: {
+        auth: {
+          authSource: 'admin',
+        },
+        user: 'root',
+        pass: 'password',
+      },
+    },
+  },
   nunjucks: {
     options: {},
   },
