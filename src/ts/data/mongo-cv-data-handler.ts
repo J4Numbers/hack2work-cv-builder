@@ -1,6 +1,7 @@
 import { v4 as generateUuid } from 'uuid';
-import { Connection, ConnectionOptions, Schema, Document } from 'mongoose';
-import * as mongoose from 'mongoose';
+import mongoose, {
+  Connection, ConnectionOptions, Schema, Document,
+} from 'mongoose';
 import StandardCvDataHandler from './standard-cv-data-handler';
 import { UserDetails } from '../objects/user-details';
 import loggingEngine from '../logger/bunyan-logger';
