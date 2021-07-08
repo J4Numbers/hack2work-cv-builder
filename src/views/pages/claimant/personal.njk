@@ -56,7 +56,7 @@
 {% endif %}
 
 {% block content_body %}
-    <form method="post" action="/claimant/create/personal">
+    <form method="post" action="/claimant/create/personal-profile">
         {{ govukRadios({
             classes: "govuk-radios--inline",
             idPrefix: "objective-known",
@@ -89,10 +89,9 @@
         }) }}
 
         {{ govukButton({
-            text: "Create CV",
-            href: "/claimant/create",
-            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
-            isStartButton: true
+            text: "Save",
+            type: "submit",
+            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
         }) }}
     </form>
 
