@@ -5,6 +5,7 @@ const { lookupClaimantUcId } = require('./common');
 
 const restructureQuestionData = (req, res, next) => {
   res.locals.render = { questions: {} };
+  console.log(JSON.stringify(res.locals));
   for (const question in QuestionArea) {
     const foundQuestion = res.locals.user.keyDetails
       .find((keyQuestion) => keyQuestion.questionArea === question);
