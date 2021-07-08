@@ -5,9 +5,6 @@ import mongoose, {
 import StandardCvDataHandler from './standard-cv-data-handler';
 import { UserDetails } from '../objects/user-details';
 import loggingEngine from '../logger/bunyan-logger';
-import {KeyDetail, KeyDetails} from '../objects/key-details';
-import {QuestionArea} from '../objects/question-area';
-import {CompletionStatus} from '../objects/completion-status';
 
 const log = loggingEngine();
 
@@ -38,7 +35,7 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
       role: String,
       name: {
         title: String,
-        forename: String,
+        firstname: String,
         surname: String,
       },
       keyDetails: [Object],
