@@ -41,10 +41,7 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
         forename: String,
         surname: String,
       },
-      keyDetails: [{
-        questionArea: String,
-        completionStatus: String,
-      }],
+      keyDetails: [Object],
     });
   }
 
