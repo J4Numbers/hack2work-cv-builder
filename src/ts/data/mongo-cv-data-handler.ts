@@ -76,4 +76,10 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
       await userDetailsModel.find().exec()
     ) as (Document & UserDetails)[];
   }
+
+  async uploadSingleUser(userDetails: UserDetails): Promise<UserDetails> {
+    const localConnection = await this.resolveConnection();
+    const userDetailModel = localConnection.model('user-details', this.userDetailsSchema);
+    userDetailModel.findByIdAndUpdate()
+  }
 }

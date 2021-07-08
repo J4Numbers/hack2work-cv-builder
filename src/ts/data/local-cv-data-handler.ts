@@ -1,6 +1,7 @@
 import StandardCvDataHandler from './standard-cv-data-handler';
 import { UserDetails } from '../objects/user-details';
 import loggingEngine from '../logger/bunyan-logger';
+import { Role } from '../objects/role';
 
 const log = loggingEngine();
 
@@ -9,7 +10,30 @@ export default class LocalCvDataHandler extends StandardCvDataHandler {
 
   constructor() {
     super();
-    this.userDetails = [];
+    this.userDetails = [
+      {
+        ucid: 'abc123',
+        name: {
+          title: 'Mr',
+          firstname: 'Joe',
+          surname: 'Hodgeson',
+        },
+        role: Role.CLAIMANT,
+        keyDetails: [],
+        cvTemplates: [],
+      },
+      {
+        ucid: 'def456',
+        name: {
+          title: 'Miss',
+          firstname: 'Leanne',
+          surname: 'Clarke',
+        },
+        role: Role.WORK_COACH,
+        keyDetails: [],
+        cvTemplates: [],
+      },
+    ];
   }
 
   async getSingleUser(userId: string): Promise<UserDetails> {
@@ -22,5 +46,11 @@ export default class LocalCvDataHandler extends StandardCvDataHandler {
 
   async getUserDetails(): Promise<Array<UserDetails>> {
     return this.userDetails;
+  }
+
+  async uploadSingleUser(userDetails: UserDetails): Promise<UserDetails> {
+    this.userDetails = this.userDetails.filter((oneUser) => oneUser.ucid !== userDetails.ucid);
+    this.userDetails.push(userDetails);
+    return userDetails;
   }
 }

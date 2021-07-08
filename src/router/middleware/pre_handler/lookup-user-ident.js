@@ -11,7 +11,7 @@ const generateSession = async (req, res) => {
 
   const newSession = await sessionManager.generateSession({ toasts: [] });
 
-  res.header('Set-Cookie', `user-session=${newSession}; Max-Age=3600; Domain=${config.get('app.hostname')}; ${secure} HttpOnly; SameSite=Strict`);
+  res.header('Set-Cookie', `user-session=${newSession}; Max-Age=3600; Path=/; Domain=${config.get('app.hostname')}; ${secure} HttpOnly; SameSite=Strict`);
   req.log.debug(`Added Set-Cookie header: ${res.header('Set-Cookie')}`);
 
   return newSession;
@@ -25,11 +25,13 @@ const lookupUserSession = async (req, res, next) => {
     } else {
       const newSession = await generateSession(req, res);
       res.nunjucks.userSession = await sessionManager.getSession(newSession);
+      res.cookies['user-session'] = newSession;
     }
   } catch (e) {
     req.log.warn(`Unable to lookup user ident :: ${e.message}`);
     const newSession = await generateSession(req, res);
     res.nunjucks.userSession = await sessionManager.getSession(newSession);
+    res.cookies['user-session'] = newSession;
   }
   next();
 };
