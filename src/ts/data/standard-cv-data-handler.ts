@@ -4,4 +4,6 @@ export default abstract class StandardCvDataHandler {
   abstract getUserDetails(): Promise<Array<UserDetails>>;
 
   abstract getSingleUser(userId: string): Promise<UserDetails>;
+
+  abstract uploadSingleUser(userDetails: UserDetails): Promise<UserDetails>;
 }

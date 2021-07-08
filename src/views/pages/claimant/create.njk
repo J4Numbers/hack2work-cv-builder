@@ -1,0 +1,74 @@
+{% extends "layouts/claimant.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block breadcrumbs %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/"
+            },
+            {
+                text: "Claimant",
+                href: "/claimant"
+            },
+            {
+                text: "Create CV",
+                href: "/claimant/create"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content_body %}
+    <h1 class="govuk-heading-xl">UC CV builder</h1>
+
+    <p class="govuk-body">
+        Welcome to the CV builder journey for UC. The following areas need to be completed or
+        marked as intentionally empty before you can continue.
+    </p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <ol class="app-task-list">
+                <li>
+                    <h2 class="app-task-list__section">
+                        <span class="app-task-list__section-number">1.</span>
+                        About you
+                    </h2>
+                    <ul class="app-task-list__items">
+                        <li class="app-task-list__item">
+                            <span class="app-task-list__task-name">
+                                <a href="/claimant/create/personal-profile" aria-describedby="personal-profile" class="govuk-link--no-visited-state">Personal profile</a>
+                            </span>
+                            <strong id="personal-profile" class="govuk-tag govuk-tag--{{ questions['PERSONAL_PROFILE'].completionStatus }} app-task-list__tag">{{ questions['PERSONAL_PROFILE'].completionStatus }}</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <span class="app-task-list__task-name">
+                                <a href="#" aria-describedby="role-history" class="govuk-link--no-visited-state">Previous job roles</a>
+                            </span>
+                            <strong id="role-history" class="govuk-tag govuk-tag--{{ questions['ROLE_HISTORY'].completionStatus }} app-task-list__tag">{{ questions['ROLE_HISTORY'].completionStatus }}</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <span class="app-task-list__task-name">
+                                <a href="#" aria-describedby="skill-profile" class="govuk-link--no-visited-state">Skills and certifications</a>
+                            </span>
+                            <strong id="skill-profile" class="govuk-tag govuk-tag--{{ questions['SKILL_PROFILE'].completionStatus }} app-task-list__tag">{{ questions['SKILL_PROFILE'].completionStatus }}</strong>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            {{ govukButton({
+                text: "Confirm answers",
+                href: "/claimant/review",
+                classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+            }) }}
+
+        </div>
+    </div>
+
+{% endblock %}

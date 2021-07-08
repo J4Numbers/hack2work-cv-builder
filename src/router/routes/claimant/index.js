@@ -2,6 +2,9 @@ const sessionManager = require('../../../js/session-management').default();
 const cvHandler = require('../../../js/data').default();
 
 const welcomeRoutes = require('./welcome');
+const startRoutes = require('./start');
+const createRoutes = require('./create');
+const personalProfileRoutes = require('./personal-profile');
 
 const lookupClaimantUcId = async (req, res, next) => {
   const allUsers = await cvHandler.getUserDetails();
@@ -41,6 +44,9 @@ const redirectOnwards = (req, res, next) => {
 
 module.exports = (server) => {
   welcomeRoutes(server);
+  startRoutes(server);
+  createRoutes(server);
+  personalProfileRoutes(server);
 
   server.get('/claimant', lookupClaimantUcId, testUserFound, updateSession, redirectOnwards);
 };
