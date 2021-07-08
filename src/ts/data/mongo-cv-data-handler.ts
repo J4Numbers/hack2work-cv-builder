@@ -79,7 +79,16 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
 
   async uploadSingleUser(userDetails: UserDetails): Promise<UserDetails> {
     const localConnection = await this.resolveConnection();
-    const userDetailModel = localConnection.model('user-details', this.userDetailsSchema);
-    userDetailModel.findByIdAndUpdate()
+    const UserDetailModel = localConnection.model('user-details', this.userDetailsSchema);
+    const documentToUpsert = new UserDetailModel({
+      ucid: userDetails.ucid,
+      name: userDetails.name,
+      role: userDetails.role,
+      keyDetails: userDetails.keyDetails,
+      cvTemplates: userDetails.cvTemplates,
+    }) as (Document & UserDetails);
+    // @ts-ignore
+    await documentToUpsert.updateOne(documentToUpsert, { upsert: true }).exec();
+    return documentToUpsert;
   }
 }
