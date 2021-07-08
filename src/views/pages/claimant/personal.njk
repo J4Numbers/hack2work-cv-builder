@@ -46,7 +46,7 @@
 {% endset -%}
 
 {% if question['objective-known'] %}
-    {% if question['objective-known'] == true %}
+    {% if question['objective-known'] == 'yes' %}
         {% set yesChecked=true %}
         {% set noChecked=false %}
     {% else %}
