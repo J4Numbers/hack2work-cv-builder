@@ -1,0 +1,2 @@
+db.dummy.insertMany([]);
+

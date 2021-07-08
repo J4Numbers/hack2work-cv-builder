@@ -1,0 +1,98 @@
+{% extends "layouts/claimant.njk" %}
+
+{% from "radios/macro.njk" import govukRadios %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block breadcrumbs %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/"
+            },
+            {
+                text: "Claimant",
+                href: "/claimant"
+            },
+            {
+                text: "Create CV",
+                href: "/claimant/create"
+            },
+            {
+                text: "Personal profile",
+                href: "/claimant/create/personal-profile"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% set objectivePlaceholder="" %}
+{% if question['objective-explanation'] | length > 0 %}
+    {% set objectivePlaceholder=question['objective-explanation'] %}
+{% endif %}
+
+{% set objectiveInput %}
+    {{ govukTextarea({
+        id: "objective-explanation",
+        name: "objective-explanation",
+        spellcheck: true,
+        value: objectivePlaceholder,
+        label: {
+            text: "Please fill in your reason for looking for a job"
+        }
+    }) }}
+{% endset -%}
+
+{% if question['objective-known'] %}
+    {% if question['objective-known'] == 'yes' %}
+        {% set yesChecked=true %}
+        {% set noChecked=false %}
+    {% else %}
+        {% set yesChecked=false %}
+        {% set noChecked=true %}
+    {% endif %}
+{% endif %}
+
+{% block content_body %}
+    <form method="post" action="/claimant/create/personal-profile">
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "objective-known",
+            name: "objective-known",
+            fieldset: {
+                legend: {
+                    text: "Do you know what you are looking for a job for?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: "Select one option."
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes",
+                    checked: yesChecked,
+                    conditional: {
+                        html: objectiveInput
+                    }
+                },
+                {
+                    value: "no",
+                    text: "No",
+                    checked: noChecked
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Save",
+            type: "submit",
+            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        }) }}
+    </form>
+
+{% endblock %}
