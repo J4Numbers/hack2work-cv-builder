@@ -40,10 +40,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://git@github.com/dwp/"
+    "url": "git://git@github.com/j4numbers/hack2work-cv-builder.git"
   },
   "bugs": {
-    "url": "https://github.com/dwp/"
+    "url": "https://github.com/j4numbers/hack2work-cv-builder"
   },
   "keywords": [
     "hack2work",

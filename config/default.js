@@ -12,7 +12,7 @@ module.exports = {
   },
   banner: {
     phrase: 'Internal',
-    feedback_link: 'https://github.com/dwp/',
+    feedback_link: 'https://github.com/j4numbers/hack2work-cv-builder',
   },
   data: {
     source: 'local',
