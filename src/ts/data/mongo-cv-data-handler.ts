@@ -87,8 +87,7 @@ export default class MongoCvDataHandler extends StandardCvDataHandler {
       role: userDetails.role,
       keyDetails: userDetails.keyDetails,
     }) as (Document & UserDetails);
-    if (Object.prototype.hasOwnProperty.call(documentToUpsert, '_id')) {
-      // @ts-ignore
+    if (documentToUpsert._id !== undefined) {
       documentToUpsert._id = userDetails._id;
     }
     // @ts-ignore
