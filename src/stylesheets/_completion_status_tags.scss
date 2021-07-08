@@ -1,0 +1,15 @@
+.govuk-tag--COMPLETED {
+  @extend .govuk-tag--green;
+}
+
+.govuk-tag--IN_PROGRESS {
+  @extend .govuk-tag--blue;
+}
+
+.govuk-tag--NOT_STARTED {
+  @extend .govuk-tag--grey;
+}
+
+.govuk-tag--INTENTIONALLY_BLANK {
+  @extend .govuk-tag--red
+}

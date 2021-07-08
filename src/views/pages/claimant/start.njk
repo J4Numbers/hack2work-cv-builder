@@ -1,0 +1,47 @@
+{% extends "layouts/claimant.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block breadcrumbs %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/"
+            },
+            {
+                text: "Claimant",
+                href: "/claimant"
+            },
+            {
+                text: "Start",
+                href: "/claimant/start"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content_body %}
+    <h1 class="govuk-heading-xl">UC CV builder</h1>
+
+    <p class="govuk-body">
+        Welcome to the CV builder journey for UC.
+    </p>
+
+    <p class="govuk-body">
+        Use this service to:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>Create a CV</li>
+    </ul>
+
+    {{ govukButton({
+        text: "Create CV",
+        href: "/claimant/create",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+    }) }}
+
+{% endblock %}
